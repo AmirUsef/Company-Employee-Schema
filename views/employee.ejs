@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employees</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/modalStyle.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body class="container">
+    <%- include('partials/header') %>
+
+        <h1 companyId="<%= company._id %>" id="companyName">company :
+            <%= company.name %>
+        </h1>
+
+        <div class="cards row">
+            <% for ( let i = 0; i < employees.length; i++ ) { %>
+                <div class="card col-12 col-md-6 col-lg-4 mt-5">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= employees[i].first_name + " " + employees[i].last_name %>
+                        </h5>
+                        <p class="card-text">code number :
+                            <%= employees[i].code_number %>
+                        </p>
+                        <a class="btn btn-primary" employeeId="<%= employees[i]._id %>">profile</a>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
+        <nav aria-label="Page navigation example" id="pagInation">
+            <ul class="pagination mt-5">
+            </ul>
+        </nav>
+
+        <button id="addBtn">+</button>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Read</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            var employeesLength = <%= employeesSize %>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/javascripts/employee.js"></script>
+</body>
+
+</html>

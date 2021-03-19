@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Companies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" href="/stylesheets/modalStyle.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+
+<body>
+    <%- include('partials/header') %>
+        <div class="container">
+            <div class="row">
+                <div class="control-group">
+                    <label class="control-label" for="datepicker4">From : </label>
+                    <div class="controls">
+                        <input type="text" class="datepicker" id="from" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="datepicker4">To : </label>
+                    <div class="controls">
+                        <input type="text" class="datepicker" id="to" />
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info" id="filter-date">Search</button>
+
+            </div>
+            <div class="cards row">
+                <% for ( let i = 0; i < companies.length; i++ ) { %>
+                    <div class="card col-12 col-md-6 col-lg-4 mt-5">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= companies[i].name %>
+                            </h5>
+                            <p class="card-text">registration number :
+                                <%= companies[i].registration_number %>
+                            </p>
+                            <a class="btn btn-primary profile" companyId="<%= companies[i]._id %>">profile</a>
+                            <a class="btn btn-primary second-btn" href="http://localhost:3000/companies/company/<%= companies[i]._id %>">employees</a>
+                        </div>
+                    </div>
+                    <% } %>
+            </div>
+
+            <nav aria-label="Page navigation example" id="pagInation">
+                <ul class="pagination mt-5">
+
+                </ul>
+            </nav>
+            <button id="addBtn">+</button>
+        </div>
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Read</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+
+        </div>
+        <script>
+            var companiesLength = <%= companiesSize %>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="/javascripts/bootstrap-datepicker.min.js"></script>
+        <script src="/javascripts/bootstrap-datepicker.fa.min.js"></script>
+        <script src="/javascripts/company.js"></script>
+</body>
+
+</html>
